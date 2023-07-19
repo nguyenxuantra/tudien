@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+    padding:0;
+    border:0;
+}
+#dangnhap-start{
+    width: 35%;
+    height:300px;
+    box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-top:10px;
+    display: flex;
+    justify-content: center;
+}
+#dangnhap-conten1{
+    width: 100%;
+    height:350px;
+    display: flex;
+    justify-content: center;
+}
+#dangnhap-child1{
+    width: 350px;
+    height:auto;
+}
+#dangnhap-child1 h1{
+    text-align: center;
+    color:#ff6666;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: normal;
+    font-size: 3em;
+}
+#dangnhap-list li{
+    list-style: none;
+    padding: 10px;
+    margin-top:4px;
+}
+#dangnhap-list li a{
+    text-decoration: none;
+    color:aliceblue;
+    font-family:Arial, Helvetica, sans-serif; 
+    font-size: 18px; 
+}
+#dangnhap-gmail{
+    background:rgb(233, 84, 84);
+}
+#dangnhap-facebook{
+    background:#7777f7;
+}
+#dangnhap-list li a i{
+    font-size:25px;
+}

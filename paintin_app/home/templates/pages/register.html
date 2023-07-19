@@ -1,0 +1,45 @@
+{% extends 'pages/base.html' %}
+{% block title %}
+Register
+{% endblock title %}
+{% load static %}
+{% block content %}
+    <div id="start-register">
+        
+        <div id="register">
+            <div id="register-child">
+                <div id="register-child2">
+                    <img  src="{% static 'img/home/hoa2.webp' %}">
+                </div>
+                <div id="register-child1">
+                    <div id="register-logo">
+                        <h1>Register</h1>
+                    </div>
+                    <div id="register-form">
+                        <form action="." method="POST">
+                            {% csrf_token %}
+                            <div id="form-register-tk">
+                               <label>Tài khoản</label> {{form.username}}
+                            </div>
+                            <div id="form-register-email">
+                                <label>Email</label>{{form.email}}
+                            </div>
+                            <div id="form-register-mk1">
+                                <label>Mât khẩu</label>{{form.password1}}
+                            </div>
+                            <div id="form-register-mk2">
+                                <label>Nhập lại mật khẩu</label>{{form.password2}}
+                            </div>
+                            <div id="form-button-register">
+                                <button type="submit">Register</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

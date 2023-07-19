@@ -1,0 +1,40 @@
+{% extends 'pages/base.html' %}
+{% block title %}
+dangnhap
+{% endblock title %}
+{% load static %}
+{% block content %}
+    <div id="start-login">
+        
+        <div id="login">
+            <div id="login-child">
+                <div id="login-child1">
+                    <div id="login-logo">
+                        <h1>Login</h1>
+                    </div>
+                    <div id="login-form">
+                        <form action="." method="POST">
+                            {% csrf_token %}
+                            <div id="form-tk">
+                               <label>Tài khoản</label> {{form.username}}
+                            </div>
+                            <div id="form-mk">
+                                <label>Mật khẩu</label>{{form.password}}
+                            </div>
+                            <div id="form-button">
+                                <input type="hidden" name='next' value='/'/>
+                                <button type="submit">Login</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+                <div id="login-child2">
+                    <img  src="{% static 'img/home/hoa1.jpg' %}">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends 'pages/base.html' %}
+{% block title %}
+Painting Detail
+{% endblock title %}
+
+{% block content %}
+<div class="painting-details">
+    <h1>{{ painting.name }}</h1>
+    <img src="{{ painting.image.url }}" alt="{{ painting.name }}" width="300">
+    <p>{{ painting.description }}</p>
+    <p>Created at: {{ painting.date }}</p>
+</div>
+
+<div class="comments-section">
+    <h2>Comments</h2>
+    <ul>
+        {% for comment in painting.comments.all %}
+        <li>
+            <p>Author: {{ comment.author }}</p>
+            <p>{{ comment.body }}</p>
+            <p>Date: {{ comment.date }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div class="add-comment">
+    {% if user.username %}
+    <form action="." method="POST">
+        {% csrf_token %}
+        bình luận {{form.body}}
+        <br>
+        <input type="submit" value='binhluan'>
+    </form>
+    {% else %}
+    {% endif %}
+</div>
+{% endblock content %}

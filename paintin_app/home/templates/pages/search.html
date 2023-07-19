@@ -1,0 +1,56 @@
+{% extends 'pages/base.html' %}
+{% block title %}
+search
+{% endblock title %}
+
+{% block content %}
+<div id="search-wraper">
+    {% if searched %}
+    {% if keys %}
+    {% for key in keys %}
+    <div id="search-start">
+        <div id="search-content1">
+            <div id="search-child1">
+                <img src="{{key.image.url}}">
+            </div>
+            <div id="search-child2">
+                <p><i class="fa fa-headphones"></i> &nbsp;{{key.discription}}</p>
+                <p>{{key.name}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    <button id="show-context-btn" onclick="toggleContextTable()">Show Context</button>
+    <table id="context-table">
+        <tbody>
+            {% for keyword in context_results %}
+            <tr>
+                <td>{{ keyword }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h2> result not found </h2>
+    {% endif %}
+    {% else %}
+    <h1>Please enter a search keyword</h1>
+    {% endif %}
+</div>
+
+<form action="" method="post" id="search-history-form">
+    {% csrf_token %}
+    <input type="hidden" name="searched" value="{{ searched }}">
+    <input type="submit" value="Save Search History">
+</form>
+<script>
+    function toggleContextTable() {
+        var contextTable = document.getElementById("context-table");
+        if (contextTable.style.display === "none") {
+            contextTable.style.display = "table";
+        } else {
+            contextTable.style.display = "none";
+        }
+    }
+</script>
+{% endblock content %}

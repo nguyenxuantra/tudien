@@ -1,0 +1,20 @@
+{% extends 'pages/base.html' %}
+{% block title %}
+dangnhap
+{% endblock title %}
+
+{% block content %}
+    <div id='dangnhap-conten1'>
+        <div id="dangnhap-start">
+            <div id='dangnhap-child1'>
+                <h1>betoni</h1>
+                <div id='dangnhap-box'>
+                    <ul id='dangnhap-list'>
+                        <li id="dangnhap-gmail"><a href="{% url 'login'%}"><i class="fa fa-envelope"></i>&nbsp;ĐĂNG NHẬP BẰNG GMAIL</a></li>
+                        <li id="dangnhap-facebook"><a href=""><i class="fa-brands fa-facebook"></i>&nbsp;ĐĂNG NHẬP BẰNG FACEBOOK</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
