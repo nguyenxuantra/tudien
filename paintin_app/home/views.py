@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
-
+from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from .forms import RegistrationForm,comentForm
+from .forms import RegistrationForm,ComentForm
 from .models import painting,comment
 
 # Create your views here.
@@ -22,27 +22,33 @@ def search(request):
     if request.method == "POST":
         searched = request.POST.get("searched")
         keys = painting.objects.filter(name__contains=searched)
-        
-        # Lấy danh sách lịch sử tìm kiếm từ session
-        context_results = request.session.get('context_results', [])
-        
-        # Thêm từ khóa đã tìm kiếm vào danh sách
-        context_results.append(searched)
-        
-        # Giới hạn số lượng mục trong danh sách lịch sử tìm kiếm (ví dụ: giữ 5 mục gần nhất)
-        context_results = context_results[-5:]
-        
-        # Lưu danh sách lịch sử tìm kiếm vào session
-        request.session['context_results'] = context_results
-        return render(request, 'pages/search.html', {'searched': searched, 'keys': keys, 'context_results': context_results})
+        keys_values = [{'name': key.name, 'discription': key.discription, 'image': key.image.url} for key in keys]
+        search_history = request.session.get('search_history', [])
+        result_exists = any(searched in result['name'] or searched in result['discription'] for search_result in search_history for result in search_result['keys_values'])
 
+        if not result_exists:
+            search_history.append({'searched': searched, 'keys_values': keys_values})
+        search_history.reverse()
+        request.session['search_history'] = search_history
+
+        return render(request, 'pages/search.html', {'searched': searched, 'keys': keys, 'search_history': search_history})
+
+
+
+
+
+
+def search_history(request):
+    search_history = request.session.get('search_history', {})
+    return render(request, 'pages/search_history.html', {'search_history': search_history})
+
+@login_required
 def painting_detail(request, pk):
     painting_instance = get_object_or_404(painting, pk=pk)
-    form = comentForm()
+    form = ComentForm()
     if request.method == 'POST':
-        form = comentForm(request.POST, author=request.user, painting=painting_instance)
+        form = ComentForm(request.POST, author=request.user, painting=painting_instance)
         if form.is_valid():
             form.save()
         return HttpResponseRedirect(request.path)
     return render(request, "pages/painting.html", {"painting": painting_instance, "form": form})
-

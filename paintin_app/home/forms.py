@@ -28,7 +28,7 @@ class RegistrationForm(forms.Form):
          User.objects.create_user(username=self.cleaned_data['username'],email=self.cleaned_data['email'],password=self.cleaned_data['password1'])
 
 
-class comentForm(forms.ModelForm):
+class ComentForm(forms.ModelForm):
     def __init__(self,*args, **kwargs):
         self.author = kwargs.pop('author',None)
         self.painting = kwargs.pop('painting',None)
@@ -41,3 +41,4 @@ class comentForm(forms.ModelForm):
     class Meta:
         model = comment
         fields=["body"]
+        

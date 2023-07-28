@@ -5,20 +5,31 @@ Painting Detail
 
 {% block content %}
 <div class="painting-details">
-    <h1>{{ painting.name }}</h1>
-    <img src="{{ painting.image.url }}" alt="{{ painting.name }}" width="300">
-    <p>{{ painting.description }}</p>
-    <p>Created at: {{ painting.date }}</p>
+    <div id="search-start">
+        <div id="search-content1">
+             <div id="search-child1">
+                  <img src="{{painting.image.url}}">
+             </div>
+             <div id="search-child2">
+                  <p><i class="fa fa-headphones"></i> &nbsp;{{painting.discription}}</p>
+                  <p>{{painting.name}}</p>
+                  <div id ="search-child3">
+                       <a href="{% url 'search_history' %}"><p>Xem toàn bộ ngữ cảnh &nbsp;<i class="fa-solid fa-arrows-up-down-left-right"></i></p></a>
+                       <a href="#"><p>thảo luận &nbsp;<i class="fa fa-comment"></i></p></a>
+                  </div>
+             </div>
+        </div>
+   </div>
 </div>
 
 <div class="comments-section">
-    <h2>Comments</h2>
+    <h2>Bình luận</h2>
     <ul>
-        {% for comment in painting.comments.all %}
+        {% for comment in painting.coments.all %}
         <li>
-            <p>Author: {{ comment.author }}</p>
+            <p> {{ comment.author }}</p>
             <p>{{ comment.body }}</p>
-            <p>Date: {{ comment.date }}</p>
+            <p>{{ comment.date }}</p>
         </li>
         {% endfor %}
     </ul>
@@ -26,11 +37,11 @@ Painting Detail
 
 <div class="add-comment">
     {% if user.username %}
-    <form action="." method="POST">
+    <form action="{% url 'painting_detail' painting.pk %}" method="POST">
         {% csrf_token %}
-        bình luận {{form.body}}
+        {{form.body}}
         <br>
-        <input type="submit" value='binhluan'>
+        <button type="submit">Gửi</button>
     </form>
     {% else %}
     {% endif %}

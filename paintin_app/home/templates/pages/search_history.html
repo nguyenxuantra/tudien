@@ -1,0 +1,38 @@
+{% extends 'pages/base.html' %}
+{% block title %}
+Search History
+{% endblock title %}
+
+{% block content %}
+<div id="search-wraper">
+  {% if search_history %}
+    <h2 id="ngucanh">Search History:</h2>
+    <ul>
+      {% for search_result in search_history %}
+        <ul>
+          {% for result in search_result.keys_values %}
+            <div id="search-start">
+              <div id="search-content1">
+                <div id="search-child1">
+                  <img src="{{ result.image }}">
+                </div>
+                <div id="search-child2">
+                  <p><i class="fa fa-headphones"></i> &nbsp;{{ result.discription }}</p>
+                  <p>{{ result.name }}</p>
+                  <div id="search-child3">
+                    <a href="{% url 'search_history' %}"><p>Xem toàn bộ ngữ cảnh &nbsp;<i class="fa-solid fa-arrows-up-down-left-right"></i></p></a>
+                    <a href="#"><p>thảo luận &nbsp;<i class="fa fa-comment"></i></p></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </ul>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No search history found.</p>
+  {% endif %}
+</div>
+{% endblock content %}
+
