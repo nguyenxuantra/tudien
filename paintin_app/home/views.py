@@ -31,7 +31,6 @@ def search(request):
             keys = keys.filter(topic__icontains=topic)
 
         keys_values = [{'name': key.name, 'discription': key.discription, 'image': key.image.url} for key in keys]
-
         # Initialize search_history as an empty list
         search_history = request.session.get('search_history', [])
         
@@ -39,14 +38,13 @@ def search(request):
         result_exists = any(searched in result['name'] or searched in result['discription'] for search_result in search_history for result in search_result['keys_values'])
 
         if not result_exists:
-            # Nếu không có trùng lặp, thêm vào search_history
+            
             search_history.append({'searched': searched, 'keys_values': keys_values})
             search_history.reverse()
             request.session['search_history'] = search_history
-
-        return render(request, 'pages/search.html', {'searched': searched, 'keys': keys, 'search_history': search_history})
-
+        return render(request, 'pages/search.html', {'searched': searched, 'keys': keys, 'search_history': search_history, 'style': style, 'topic': topic})
     return render(request, 'pages/search.html')
+
 
 
 
@@ -98,3 +96,5 @@ def delete_painting(request, pk):
         return redirect('painting_list')
     return render(request, 'pages/delete_painting.html', {'painting': painting_detail})
 
+def report_issue(request):
+    return render(request, 'pages/report_issue.html') 

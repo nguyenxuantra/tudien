@@ -38,18 +38,18 @@
             
             <!-- Phong cách -->
             <select name="style" id="style">
-                <option value="">-- Chọn phong cách --</option>
-                <option value="Văn viết">Văn viết</option>
-                <option value="Văn nói">Văn nói</option>
+                <option value=""> Chọn phong cách</option>
+                <option value="Văn viết" {% if style == 'Văn viết' %}selected{% endif %}>Văn viết</option>
+                <option value="Văn nói" {% if style == 'Văn nói' %}selected{% endif %}>Văn nói</option>
             </select>
             
             <!-- Chủ đề -->
             <select name="topic" id="topic">
                 <option value="">-- Chọn chủ đề --</option>
-                <option value="Du lịch">Du lịch</option>
-                <option value="Đời thường">Đời thường</option>
-                <option value="Kinh tế">Kinh tế</option>
-                <option value="Y tế">Y tế</option>
+                <option value="Du lịch" {% if topic == 'Du lịch' %}selected{% endif %}>Du lịch</option>
+                <option value="Đời thường" {% if topic == 'Đời thường' %}selected{% endif %}>Đời thường</option>
+                <option value="Kinh tế" {% if topic == 'Kinh tế' %}selected{% endif %}>Kinh tế</option>
+                <option value="Y tế" {% if topic == 'Y tế' %}selected{% endif %}>Y tế</option>
             </select>
             <ul id="nav-dk">
                 {% if user.username %}

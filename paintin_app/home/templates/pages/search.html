@@ -20,6 +20,9 @@ search
                                         <a href="{% url 'search_history' %}"><p>Xem toàn bộ ngữ cảnh &nbsp;<i class="fa-solid fa-arrows-up-down-left-right"></i></p></a>
                                         <a href="{% url 'painting_detail' key.pk %}"><p>thảo luận &nbsp;<i class="fa fa-comment"></i></p></a>
                                    </div>
+                                   <div id="search_child4">
+                                        <a href="#" onclick="showReportModal()"><i class="fa fa-triangle-exclamation"></i> báo cáo</a>
+                                   </div>
                               </div>
                          </div>
                     </div>
@@ -31,4 +34,87 @@ search
     <h1>Please enter a search keyword</h1>
     {% endif %}
 </div>
+
+
+
+<div id="reportModal" class="modal">
+     <div class="modal-content">
+         <!-- Thêm nút "x" để đóng modal -->
+         <span class="close" onclick="closeReportModal()">&times;</span>
+         <h2>Chọn loại báo cáo</h2>
+         <label>
+             <input type="radio" name="reportType" value="reportError">
+             Báo cáo lỗi sai của câu
+         </label>
+         <label>
+             <input type="radio" name="reportType" value="contributeSentence">
+             Đóng góp câu mới
+         </label>
+         <button onclick="continueReport()">Kết tiếp</button>
+     </div>
+ </div>
+
+ <div id="newBox" class="modal" style="display: none;">
+     <!-- Nội dung của box mới sẽ được thêm vào đây -->
+     <span class="close" onclick="closeReportModal()">&times;</span>
+ </div>
+ <script>
+     function showReportModal() {
+         const modal = document.getElementById('reportModal');
+         modal.style.display = 'block';
+     }
+     function continueReport() {
+         const reportType = document.querySelector('input[name="reportType"]:checked').value;
+         // Xử lý logic khi người dùng chọn báo cáo lỗi sai của câu hoặc đóng góp câu mới
+         // Ví dụ: chuyển người dùng đến các trang tương ứng dựa trên lựa chọn
+         if (reportType === 'reportError') {
+             window.location.href = "{% url 'report_issue' %}";
+         } else if (reportType === 'contributeSentence') {
+             window.location.href = "#";
+         }
+     }
+     function closeReportModal() {
+          const modal = document.getElementById('reportModal');
+          modal.style.display = 'none';
+      }
+
+
+     // box mới
+     function continueReport() {
+          // Lấy phần tử box cũ và box mới
+          const oldBox = document.getElementById('reportModal');
+          const newBox = document.getElementById('newBox');
+      
+          // Trượt box cũ xuống và ẩn đi
+          oldBox.style.transition = 'all 0.3s ease-in-out';
+          oldBox.style.transform = 'translateY(100%)';
+          oldBox.style.opacity = '0';
+      
+          // Hiển thị box mới sau 0.3s
+          setTimeout(function () {
+              newBox.style.display = 'block';
+              newBox.style.transition = 'all 0.3s ease-in-out';
+              newBox.style.transform = 'translateY(0)';
+              newBox.style.opacity = '1';
+          }, 300); // 0.3s sau khi box cũ trượt xuống
+      
+          // Gọi hàm đóng modal khi click vào "x" trong box mới
+          const closeButton = newBox.querySelector('.close');
+          closeButton.addEventListener('click', closeNewBoxModal);
+      }
+      
+      // Function để đóng box mới
+      function closeNewBoxModal() {
+          const newBox = document.getElementById('newBox');
+          newBox.style.display = 'none';
+      }
+      
+      // Function để đóng box cũ khi click vào "x" trong box cũ
+      function closeReportModal() {
+          const oldBox = document.getElementById('reportModal');
+          oldBox.style.display = 'none';
+      }
+     </script>
 {% endblock content %}
+
+     
