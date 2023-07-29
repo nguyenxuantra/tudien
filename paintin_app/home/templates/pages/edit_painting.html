@@ -1,6 +1,15 @@
+{% extends 'pages/base.html' %}
+{% block title %}
+Edit painting
+{% endblock title %}
+
+{% block content %}
 <h1>Edit </h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    <p>Name: {{ form.name }}</p>
+    <p>Discription: {{form.discription}}</p>
+    <p>Image: {{form.image}}</p>
     <button type="submit">Save</button>
-</form>
+</form>S
+{% endblock content %}
