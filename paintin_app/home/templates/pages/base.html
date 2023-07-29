@@ -20,6 +20,7 @@
         <link rel="stylesheet" href="{% static 'register1.css'%}">
         <link rel="stylesheet" href="{% static 'search3.css'%}">
         <link rel="stylesheet" href="{% static 'painting.css'%}">
+        <link rel="stylesheet" href="{% static 'paintinglist.css'%}">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     </head>
@@ -29,31 +30,32 @@
                 betoni
             </div>
             <div id="search">
-                <form action="{% url 'search' %}"  id="search-box" method="POST" >
+                <form action="{% url 'search' %}" id="search-box" method="POST">
                     {% csrf_token %}
-                    <input type="search" id="search-text" role="search" placeholder="search" ari-label="search" name="searched">
+                    <input type="search" id="search-text" role="search" placeholder="search" aria-label="search" name="searched">
                     <button type="submit"><i class="fa fa-magnifying-glass"></i></button>
                 </form>
             </div>
-            <ul id="nav-list">
-                <li ><a href="">Phong cách&nbsp;<i class="fa fa-angle-down"></i></a>
-                    <ul class="nav-list">
-                        <li><a href="">Văn viết</a></li>
-                        <li><a href="">Văn nói</a></li>
-                    </ul>
-                </li>
-                <li><a href="">Chủ đề&nbsp;<i class="fa fa-angle-down"></i></a>
-                    <ul class="nav-list">
-                        <li><a href="">Du lịch</a></li>
-                        <li><a href="">Đời thường</a></li>
-                        <li><a href="">Kinh tế</a></li>
-                        <li><a href="">Y tế</a></li>
-                    </ul>
-                </li>
-            </ul>
+            
+            <!-- Phong cách -->
+            <select name="style" id="style">
+                <option value="">-- Chọn phong cách --</option>
+                <option value="Văn viết">Văn viết</option>
+                <option value="Văn nói">Văn nói</option>
+            </select>
+            
+            <!-- Chủ đề -->
+            <select name="topic" id="topic">
+                <option value="">-- Chọn chủ đề --</option>
+                <option value="Du lịch">Du lịch</option>
+                <option value="Đời thường">Đời thường</option>
+                <option value="Kinh tế">Kinh tế</option>
+                <option value="Y tế">Y tế</option>
+            </select>
             <ul id="nav-dk">
                 {% if user.username %}
                 <li><a href="{% url 'logout'%}">Đăng xuất</a></li>
+                <li><a href="{% url 'painting_list'%}">list</a></li>
                 {% else %}
                 <li><a href="{% url 'dangnhap' %}">Đăng nhập</a></li>
                 <li><a href="{% url 'register' %}">Đăng kí</a> </li>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from .forms import RegistrationForm,ComentForm
+from .forms import RegistrationForm,ComentForm,PaintingForm
 from .models import painting,comment
 
 # Create your views here.
@@ -21,20 +21,32 @@ def dangnhap(request):
 def search(request):
     if request.method == "POST":
         searched = request.POST.get("searched")
+        style = request.POST.get("style")
+        topic = request.POST.get("topic")
+
         keys = painting.objects.filter(name__contains=searched)
+        if style:
+            keys = keys.filter(style__icontains=style)
+        if topic:
+            keys = keys.filter(topic__icontains=topic)
+
         keys_values = [{'name': key.name, 'discription': key.discription, 'image': key.image.url} for key in keys]
+
+        # Initialize search_history as an empty list
         search_history = request.session.get('search_history', [])
+        
+        # Check for duplicates
         result_exists = any(searched in result['name'] or searched in result['discription'] for search_result in search_history for result in search_result['keys_values'])
 
         if not result_exists:
+            # Nếu không có trùng lặp, thêm vào search_history
             search_history.append({'searched': searched, 'keys_values': keys_values})
-        search_history.reverse()
-        request.session['search_history'] = search_history
+            search_history.reverse()
+            request.session['search_history'] = search_history
 
         return render(request, 'pages/search.html', {'searched': searched, 'keys': keys, 'search_history': search_history})
 
-
-
+    return render(request, 'pages/search.html')
 
 
 
@@ -52,3 +64,37 @@ def painting_detail(request, pk):
             form.save()
         return HttpResponseRedirect(request.path)
     return render(request, "pages/painting.html", {"painting": painting_instance, "form": form})
+
+
+def painting_list(request):
+    paintings = painting.objects.all()
+    return render(request, 'pages/painting_list.html', {'paintings': paintings})
+
+def add_painting(request):
+    if request.method == 'POST':
+        form = PaintingForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('painting_list')
+    else:
+        form = PaintingForm()
+    return render(request, 'pages/add_painting.html', {'form': form})
+
+def edit_painting(request, pk):
+    painting_detail = painting.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = PaintingForm(request.POST, request.FILES, instance=painting_detail)
+        if form.is_valid():
+            form.save()
+            return redirect('painting_list')
+    else:
+        form = PaintingForm(instance=painting_detail)
+    return render(request, 'pages/edit_painting.html', {'form': form})
+
+def delete_painting(request, pk):
+    painting_detail = painting.objects.get(pk=pk)
+    if request.method == 'POST':
+        painting_detail.delete()
+        return redirect('painting_list')
+    return render(request, 'pages/delete_painting.html', {'painting': painting_detail})
+
