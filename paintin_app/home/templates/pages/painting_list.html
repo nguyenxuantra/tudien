@@ -1,14 +1,33 @@
-<h1>Painting List</h1>
+{% extends 'pages/base.html' %}
+{% block title %}
+Painting Detail
+{% endblock title %}
+
+{% block content %}
+<div id="painting_list0">
+    <h1 id="paintinglist_pap">Painting List</h1>
+</div>
+    <div class="painting_list1">
 <ul>
     {% for painting in paintings %}
     <li>
-        <img src="{{ painting.image.url }}"  width="300">
-        <h2>{{ painting.name }}</h2>
-        <p>{{ painting.description }}</p>
-        <p>Created at: {{ painting.date }}</p>
-        <a href="{% url 'edit_painting' painting.pk %}">Edit</a>
-        <a href="{% url 'delete_painting' painting.pk %}">Delete</a>
+        <div id="painting_list2">
+            <img src="{{ painting.image.url }}"  width="300">
+        </div>
+            <div id="paintingname_1">
+                <h2>{{ painting.name }}</h2>
+            </div>
+        <div id="painting_list3">
+            <p>{{ painting.description }}</p>
+            <p>Created at: {{ painting.date }}</p>
+        </div>
+        <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
+        <a href="{% url 'delete_painting' painting.pk %}"><i class="fa-solid fa-delete-left"></i>Delete</a>
     </li>
     {% endfor %}
 </ul>
-<a href="{% url 'add_painting' %}">Add New Painting</a>
+    </div>  
+<div id="paintingadd_pap"> 
+    <a href="{% url 'add_painting' %}"><i class="fa-solid fa-plus"></i> Add New Painting</a>
+</div>
+{% endblock content %}
