@@ -1,0 +1,19 @@
+#edit_painting1 {
+    color: darkred;
+    font-weight: 400;
+    font-style: italic;
+}
+
+#edit_painting2 p{
+    color: darkred;
+    font-weight: 500;
+    left: 10px
+}
+
+#edit_painting3 p{
+    color: brown;
+    font-weight: 500;
+    left: 15px;
+}
+
+

@@ -5,7 +5,7 @@ Painting Detail
 
 {% block content %}
 <div id="painting_list0">
-    <h1 id="paintinglist_pap">Painting List</h1>
+    <h1 id="paintinglist_pap"><i class="fa-solid fa-list"></i>  Painting List</h1>
 </div>
     <div class="painting_list1">
 <ul>
@@ -19,15 +19,20 @@ Painting Detail
             </div>
         <div id="painting_list3">
             <p>{{ painting.description }}</p>
-            <p>Created at: {{ painting.date }}</p>
+            <p><i class="fa-solid fa-ellipsis-vertical"></i>  Created at: {{ painting.date }}</p>
         </div>
-        <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-solid fa-pen-to-square"></i>Edit</a>
-        <a href="{% url 'delete_painting' painting.pk %}"><i class="fa-solid fa-delete-left"></i>Delete</a>
+
+        <div id="painting_list4">
+            <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-solid fa-pen-to-square"></i>  Edit</a> </br>
+        </div>
+            <div id="painting_list5">  
+            <a href="{% url 'delete_painting' painting.pk %}"><i class="fa-solid fa-delete-left"></i>  Delete</a>
+        </div>  
     </li>
     {% endfor %}
 </ul>
     </div>  
-<div id="paintingadd_pap"> 
+<div id="paintinglist_6"> 
     <a href="{% url 'add_painting' %}"><i class="fa-solid fa-plus"></i> Add New Painting</a>
 </div>
 {% endblock content %}
