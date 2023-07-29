@@ -1,7 +1,6 @@
-
-h1 {
+#paintinglist_pap {
     font-weight: 500;
-    color: #63B5E0;
+    color: #7368FA;
     font-style: initial;
     margin: 15px;
 }
@@ -18,7 +17,7 @@ h1 {
     width: 100px;
 }
 
-h2 {
+#paintingname_1 {
     margin: 20px;
     color: rgb(68, 65, 65);
     font-weight: 500;

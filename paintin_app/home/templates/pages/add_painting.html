@@ -3,9 +3,10 @@
 Add painting
 {% endblock title %}
 
-
 {% block content %}
-<h1>Thêm</h1>
+    <div>
+        <h1 id="add_painting1">Thêm</h1>
+    </div>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <p>Name: {{ form.name }}</p>
