@@ -1,4 +1,12 @@
-<h1>Painting List</h1>
+{% extends 'pages/base.html' %}
+{% block title %}
+Painting Detail
+{% endblock title %}
+
+{% block content %}
+<div>
+    <h1 id="paintinglist_pap">Painting List</h1>
+</div>
 <ul>
     {% for painting in paintings %}
     <li>
@@ -12,3 +20,4 @@
     {% endfor %}
 </ul>
 <a href="{% url 'add_painting' %}">Add New Painting</a>
+{% endblock content %}
