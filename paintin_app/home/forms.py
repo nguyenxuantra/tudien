@@ -2,7 +2,7 @@ from django import forms
 import re
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-from .models import comment
+from .models import comment,painting
 class RegistrationForm(forms.Form):
     username = forms.CharField(label='Tài khoản', max_length=30)
     email = forms.EmailField(label='Email')
@@ -41,4 +41,7 @@ class ComentForm(forms.ModelForm):
     class Meta:
         model = comment
         fields=["body"]
-        
+class PaintingForm(forms.ModelForm):
+    class Meta:
+        model = painting
+        fields = ['name', 'discription', 'image']        

@@ -1,0 +1,14 @@
+<h1>Painting List</h1>
+<ul>
+    {% for painting in paintings %}
+    <li>
+        <img src="{{ painting.image.url }}"  width="300">
+        <h2>{{ painting.name }}</h2>
+        <p>{{ painting.description }}</p>
+        <p>Created at: {{ painting.date }}</p>
+        <a href="{% url 'edit_painting' painting.pk %}">Edit</a>
+        <a href="{% url 'delete_painting' painting.pk %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'add_painting' %}">Add New Painting</a>
