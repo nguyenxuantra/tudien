@@ -1,0 +1,45 @@
+#paintinglist_pap {
+    font-weight: 500;
+    color: #7368FA;
+    font-style: initial;
+    margin: 15px;
+}
+
+#painting_list1 {
+    box-sizing: border-box;
+    color: burlywood;
+}
+
+#painting_list2 {
+    padding-left: 100px;
+    display: flex;
+    border-radius: 20px;
+    width: 100px;
+}
+
+#paintingname_1 {
+    margin: 20px;
+    color: rgb(68, 65, 65);
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+p {
+    font-weight: 500;
+    margin: 20px;
+    padding: 0; 
+}
+
+a {
+    text-decoration: none;
+    line-height: 35px;
+    color: #D6905C;
+}
+
+#paintingadd_pap {
+    color: #7368FA;
+    line-height: 35px;
+    text-overflow: unset;
+    transition: none;
+
+}
