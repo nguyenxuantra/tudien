@@ -14,32 +14,46 @@
     padding-left: 100px;
     display: flex;
     border-radius: 20px;
-    width: 100px;
+    width: 50px;
 }
 
 #paintingname_1 {
-    margin: 20px;
+    margin: 0;
     color: rgb(68, 65, 65);
     font-weight: 500;
-    box-sizing: border-box;
+    right: 0;
+    position: absolute;
+    width: 700px;
 }
 
 #painting_list3 p {
     font-weight: 500;
-    margin: 20px;
+    margin: 50px;
     padding: 0; 
+    right: 0;
+    top: 20;
+    position: absolute;
+    width: 650px;
 }
 
 #painting_list4 a {
     text-decoration: none;
     line-height: 35px;
     color: #D6905C;
+    right: 0;
+    top: 20;
+    position: absolute;
+    width: 200px;
 }
 
 #painting_list5 a {
     text-decoration: none;
     line-height: 35px;
     color: indianred;
+    right: 0;
+    top: 20;
+    position: absolute;
+    width: 200px;
 }
 
 #paintinglist_6 a{
