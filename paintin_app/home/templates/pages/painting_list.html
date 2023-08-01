@@ -5,27 +5,29 @@ Painting Detail
 
 {% block content %}
 <div id="painting_list0">
-    <h1 id="paintinglist_pap"><i class="fa-solid fa-list"></i>  Painting List</h1>
+    <h1 id="paintinglist_pap"><i class="fa-solid fa-list-ul"></i>  Painting List</h1>
 </div>
     <div class="painting_list1">
 <ul>
     {% for painting in paintings %}
     <li id="painting_list-child">
         <div id="painting_list2">
-            <img src="{{ painting.image.url }}"  width="150px">
+            <img src="{{ painting.image.url }}"  width="200px">
         </div>
             <div id="paintingname_1">
-                <h2>{{ painting.name }}</h2>
+                <div id="paintingname_2">
+                    <h2>{{ painting.name }}</h2>
+                </div>
+            <div id="paintingname_3">
                 <p>{{ painting.description }}</p>
                 <p><i class="fa-solid fa-ellipsis-vertical"></i>  Created at: {{ painting.date }}</p>
-            
+            </div>  
 
-        
-                <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-solid fa-pen-to-square"></i>  Edit</a> </br>
-            
-                
+            <div id="painting_list4">
+                <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-solid fa-pen-to-square"></i>  Edit</a>
                 <a href="{% url 'delete_painting' painting.pk %}"><i class="fa-solid fa-delete-left"></i>  Delete</a>
-            
+            </div>
+
             </div>
         
             

@@ -1,8 +1,4 @@
 
-
-
-
-
 #add_painting1 {
     color: #3C7DFA;
     font-weight: 300;
@@ -20,13 +16,15 @@
         color: brown;
         font-weight: 500;
         left: 15px;
-     }
-
+ }
+#add_painting3 textarea{
+    border-radius: 1px solid black;
+}
 button {
     cursor: pointer;
     color: black;
     padding: 10px 20px;
-    border: none;
+    border: 1px brown solid;
     transition: 0.25s;
     outline: none;
     box-sizing: border-box;

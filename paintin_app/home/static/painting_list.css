@@ -9,9 +9,40 @@
     color: burlywood;
 }
 
+#painting_list2 {
+    margin: 30px;
+    text-align: center;
+}
 
-#painting_list-child{
+#paintingname_2 {
+    margin-left: 50px;
+    line-height: 40px;
+    font-family: 'Merriweather';
+    color: #282431;
+}
+
+#paintingname_3 {
+    margin-left: 50px;
+    font-weight: bold;
+    color: green;
+    font-family: 'PT Serif';
+}
+
+#painting_list4 a {
+    text-decoration: none;
+    color: chocolate;
+    margin-left: 50px;
+}
+
+#paintinglist_6 a {
+    text-decoration: none;
+    margin-left: 50px;
+    font-weight: 500;
+    color: brown;
+}
+
+
+#painting_list-child {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
