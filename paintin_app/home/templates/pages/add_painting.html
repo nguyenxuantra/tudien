@@ -5,6 +5,8 @@ Add painting
 
 
 {% block content %}
+
+<div id="add_center">
 <h1 id="add_painting1"><i class="fa-solid fa-plus"></i>Thêm Mục</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -19,6 +21,7 @@ Add painting
 
     
     <button type="submit">Save</button>
+</div>
     
 </form>
 

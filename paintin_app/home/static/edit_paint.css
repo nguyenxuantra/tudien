@@ -1,7 +1,6 @@
 #edit_paint {
     text-align: center;
-    display: flex;
-    justify-content: center;
+    padding: 20px;
 }
 
 
@@ -14,14 +13,13 @@
 
 #edit_painting2 p{
     color: darkred;
-    font-weight: 500;
-    left: 10px
+    font-weight: 700;
+    left: 10px;
+    font-style: italic;
 }
 
 #edit_painting3 p{
     color: brown;
-    font-weight: 500;
-    left: 15px;
+    font-weight: 700;
+    font-style: italic;
 }
-
-

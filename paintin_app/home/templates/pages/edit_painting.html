@@ -4,6 +4,8 @@ Edit painting
 {% endblock title %}
 
 {% block content %}
+
+    <div id="edit_paint">
 <h1 id="edit_painting1"><i class="fa-solid fa-plus"></i> Edit </h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
@@ -17,6 +19,8 @@ Edit painting
     </div>
 
     <button type="submit">Save</button>
+
+</div>
 
 </form>
 {% endblock content %}
