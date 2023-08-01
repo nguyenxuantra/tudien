@@ -5,14 +5,14 @@ Painting Detail
 
 {% block content %}
 <div id="painting_list0">
-    <h1 id="paintinglist_pap"><i class="fa-solid fa-list"></i>  Painting List</h1>
+    <h1 id="paintinglist_pap"><i class="fa-solid fa-list-ul"></i>  Painting List</h1>
 </div>
     <div class="painting_list1">
 <ul>
     {% for painting in paintings %}
     <li>
         <div id="painting_list2">
-            <img src="{{ painting.image.url }}"  width="150px">
+            <img src="{{ painting.image.url }}"  width="200px">
         </div>
             <div id="paintingname_1">
                 <h2>{{ painting.name }}</h2>
