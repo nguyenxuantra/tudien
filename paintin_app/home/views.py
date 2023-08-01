@@ -98,3 +98,4 @@ def delete_painting(request, pk):
 
 def report_issue(request):
     return render(request, 'pages/report_issue.html') 
+

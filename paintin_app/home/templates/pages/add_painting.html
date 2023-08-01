@@ -3,16 +3,23 @@
 Add painting
 {% endblock title %}
 
+
 {% block content %}
-    <div>
-        <h1 id="add_painting1">Thêm</h1>
-    </div>
+<h1 id="add_painting1"><i class="fa-solid fa-plus"></i>Thêm Mục</h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <p>Name: {{ form.name }}</p>
-    <p>Discription: {{form.discription}}</p>
-    <p>Image: {{form.image}}</p>
+    <div id="add_painting2">
+        <p>Name: {{ form.name }}</p>
+    </div>
+
+    <div id="add_painting3">
+        <p>Discription: {{form.discription}}</p>
+        <p><i class="fa-solid fa-image"></i>  Image: {{form.image}}</p>
+    </div>
+
+    
     <button type="submit">Save</button>
+    
 </form>
 
 {% endblock content %}

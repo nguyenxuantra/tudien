@@ -22,28 +22,33 @@ Painting Detail
    </div>
 </div>
 
-<div class="comments-section">
-    <h2>Bình luận</h2>
-    <ul>
-        {% for comment in painting.coments.all %}
-        <li>
-            <p> {{ comment.author }}</p>
-            <p>{{ comment.body }}</p>
-            <p>{{ comment.date }}</p>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
-
 <div class="add-comment">
+    <h2>Bình luận</h2>
     {% if user.username %}
-    <form action="{% url 'painting_detail' painting.pk %}" method="POST">
+    <form action="{% url 'painting_detail' painting.pk %}" method="POST" class="form-comment">
         {% csrf_token %}
         {{form.body}}
-        <br>
-        <button type="submit">Gửi</button>
+        
+        <button type="submit"><i class="fa fa-paper-plane"></i></button>
     </form>
     {% else %}
     {% endif %}
 </div>
+<div class="comments-section">
+    <ul>
+        {% for comment in painting.coments.all %}
+        <div id="comments-content">
+            <div id="comment-icon"> 
+                <i class="fa fa-user"></i>
+            </div>
+            <div id="comment-child1">
+                <p id="author"> {{ comment.author }} <span>{{ comment.date }}</span></p>
+                <p id="comment-body">{{ comment.body }}</p>  
+            </div>
+        </div>
+        {% endfor %}
+    </ul>
+</div>
+
+
 {% endblock content %}

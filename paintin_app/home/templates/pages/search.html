@@ -38,83 +38,105 @@ search
 
 
 <div id="reportModal" class="modal">
-     <div class="modal-content">
-         <!-- Thêm nút "x" để đóng modal -->
-         <span class="close" onclick="closeReportModal()">&times;</span>
-         <h2>Chọn loại báo cáo</h2>
-         <label>
-             <input type="radio" name="reportType" value="reportError">
-             Báo cáo lỗi sai của câu
-         </label>
-         <label>
-             <input type="radio" name="reportType" value="contributeSentence">
-             Đóng góp câu mới
-         </label>
-         <button onclick="continueReport()">Kết tiếp</button>
-     </div>
- </div>
+    <div class="modal-content">
+        <!-- Thêm nút "x" để đóng modal -->
+        <span class="close" onclick="closeReportModal()">&times;</span>
+        <h2>Chọn loại báo cáo</h2>
+        <label>
+            <input type="radio" name="reportType" value="reportError">
+            Báo cáo lỗi sai của câu
+        </label>
+        <label>
+            <input type="radio" name="reportType" value="contributeSentence">
+            Đóng góp câu mới
+        </label>
+        <button onclick="continueReport()">Kết tiếp</button>
+    </div>
+</div>
 
- <div id="newBox" class="modal" style="display: none;">
-     <!-- Nội dung của box mới sẽ được thêm vào đây -->
-     <span class="close" onclick="closeReportModal()">&times;</span>
- </div>
- <script>
-     function showReportModal() {
-         const modal = document.getElementById('reportModal');
-         modal.style.display = 'block';
-     }
-     function continueReport() {
-         const reportType = document.querySelector('input[name="reportType"]:checked').value;
-         // Xử lý logic khi người dùng chọn báo cáo lỗi sai của câu hoặc đóng góp câu mới
-         // Ví dụ: chuyển người dùng đến các trang tương ứng dựa trên lựa chọn
-         if (reportType === 'reportError') {
-             window.location.href = "{% url 'report_issue' %}";
-         } else if (reportType === 'contributeSentence') {
-             window.location.href = "#";
-         }
-     }
-     function closeReportModal() {
-          const modal = document.getElementById('reportModal');
-          modal.style.display = 'none';
-      }
+<div id="newBox1" class="modal" style="display: none;">  
+    <span class="close" onclick="closeNewBoxModal()">&times;</span>
+    <h2>Chọn lỗi sai:</h2>
+    <label><input type="radio" name="errorType" value="dich_sai" />Dịch sai nghĩa tiếng Việt</label>
+    <label><input type="radio" name="errorType" value="sai_ngu_phap" />Sai ngữ pháp</label>
+    <label><input type="radio" name="errorType" value="loi_khac" />Lỗi khác</label>
+    <textarea id="errorDescription" placeholder="Hãy cho tôi biết về lỗi sai..."></textarea>
+    <button onclick="submitReport()">Hoàn tất</button>
+</div>
 
+<div id="contributeBox" class="modal" style="display: none;">
+    <span class="close" onclick="closeContributeBoxModal()">&times;</span>
+    <h2>Nhập câu tiếng Nhật:</h2>
+    <textarea id="japaneseSentence" placeholder="Nhập câu tiếng Nhật..."></textarea>
+    <h2>Nhập câu tiếng Việt tương ứng:</h2>
+    <textarea id="vietnameseSentence" placeholder="Nhập câu tiếng Việt..."></textarea>
+    <button onclick="submitContribute()">Hoàn tất</button>
+</div>
 
-     // box mới
-     function continueReport() {
-          // Lấy phần tử box cũ và box mới
-          const oldBox = document.getElementById('reportModal');
-          const newBox = document.getElementById('newBox');
-      
-          // Trượt box cũ xuống và ẩn đi
-          oldBox.style.transition = 'all 0.3s ease-in-out';
-          oldBox.style.transform = 'translateY(100%)';
-          oldBox.style.opacity = '0';
-      
-          // Hiển thị box mới sau 0.3s
-          setTimeout(function () {
-              newBox.style.display = 'block';
-              newBox.style.transition = 'all 0.3s ease-in-out';
-              newBox.style.transform = 'translateY(0)';
-              newBox.style.opacity = '1';
-          }, 300); // 0.3s sau khi box cũ trượt xuống
-      
-          // Gọi hàm đóng modal khi click vào "x" trong box mới
-          const closeButton = newBox.querySelector('.close');
-          closeButton.addEventListener('click', closeNewBoxModal);
-      }
-      
-      // Function để đóng box mới
-      function closeNewBoxModal() {
-          const newBox = document.getElementById('newBox');
-          newBox.style.display = 'none';
-      }
-      
-      // Function để đóng box cũ khi click vào "x" trong box cũ
-      function closeReportModal() {
-          const oldBox = document.getElementById('reportModal');
-          oldBox.style.display = 'none';
-      }
-     </script>
+<script>
+    function showReportModal() {
+        const modal = document.getElementById('reportModal');
+        modal.style.display = 'block';
+    }
+
+    function continueReport() {
+        const reportType = document.querySelector('input[name="reportType"]:checked').value;
+        if (reportType === 'contributeSentence') {
+            // Hiển thị box đóng góp câu mới
+            const contributeBox = document.getElementById('contributeBox');
+            contributeBox.style.display = 'block';
+            const reportBox = document.getElementById('newBox1');
+            reportBox.style.display = 'none';
+
+        } else if (reportType === 'reportError') {
+             // Hiển thị box báo cáo lỗi sai
+             const reportBox = document.getElementById('newBox1');
+             reportBox.style.display = 'block';
+             const contributeBox = document.getElementById('contributeBox');
+             contributeBox.style.display = 'none';
+        }
+    }
+
+    function closeReportModal() {
+        const modal = document.getElementById('reportModal');
+        modal.style.display = 'none';
+    }
+
+    function closeNewBoxModal() {
+        const reportBox = document.getElementById('newBox1');
+        reportBox.style.display = 'none';
+    }
+
+    function closeContributeBoxModal() {
+        const contributeBox = document.getElementById('contributeBox');
+        contributeBox.style.display = 'none';
+    }
+   
+
+    function showThankYouMessage(message) {
+        alert(message);
+
+        // Tự đóng box sau khi hiển thị thông báo
+        closeReportModal();
+        closeNewBoxModal();
+        closeContributeBoxModal();
+    }
+
+    function submitReport() {
+        // ... Đoạn mã xử lý gửi báo cáo lỗi ...
+
+        showThankYouMessage('Cảm ơn bạn đã báo cáo lỗi sai của câu!');
+    }
+
+    function submitContribute() {
+        // ... Đoạn mã xử lý gửi đóng góp câu mới ...
+
+        showThankYouMessage('Cảm ơn bạn đã đóng góp câu mới!');
+    }
+   
+    
+</script>
+
 {% endblock content %}
 
      

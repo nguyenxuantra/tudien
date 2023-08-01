@@ -19,4 +19,6 @@ class comment(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     body = models.TextField()
     date = models.DateField(auto_now_add=True)
-    
+
+
+

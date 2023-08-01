@@ -4,12 +4,19 @@ Edit painting
 {% endblock title %}
 
 {% block content %}
-<h1>Edit </h1>
+<h1 id="edit_painting1"><i class="fa-solid fa-plus"></i> Edit </h1>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <p>Name: {{ form.name }}</p>
-    <p>Discription: {{form.discription}}</p>
-    <p>Image: {{form.image}}</p>
+    
+    <div id="edit_painting2">
+        <p>Name: {{ form.name }}</p>
+    </div>
+    <div id="edit_painting3">
+        <p>Discription: {{form.discription}}</p>
+        <p><i class="fa-solid fa-image"></i>  Image: {{form.image}}</p>
+    </div>
+
     <button type="submit">Save</button>
+
 </form>
 {% endblock content %}

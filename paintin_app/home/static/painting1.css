@@ -55,13 +55,30 @@
     padding: 0;
     margin: 0;
   }
-  
-  .comments-section li {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
+  #comments-content{
+    display: flex;
+    margin-left:20px;
+    margin-top:15px;
   }
-  
+  #comment-icon{
+    padding:10px 12px;
+    border-radius:20px;
+    color: #fff;
+    background-color: rgb(124, 124, 233);
+  }
+#comment-child1{
+    margin-left:5px;
+}
+#comment-child1 #author{
+    font-size: 14px;
+}
+#author span{
+    font-style: italic;
+    color:rgb(114, 111, 111);
+}
+#comment-body{
+    margin-top:5px;
+}
   .comments-section p {
     margin: 0;
   }
@@ -69,12 +86,15 @@
   /* Phần thêm bình luận */
   .add-comment {
     margin: 20px;
+    width:80%;
+    height:auto;
   }
   
   .add-comment form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    margin-left:20px;
   }
   
   .add-comment label {
@@ -84,24 +104,32 @@
   
   .add-comment textarea {
     width: 100%;
-    height: 100px;
+    height: 50px;
     resize: vertical;
     padding: 5px;
     margin-bottom: 10px;
+    font-size: 1.1em;
+    border:1px solid black;
   }
-  
+ 
   .add-comment button[type="submit"] {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    cursor: pointer;
+
   }
-  
+  .form-comment{
+    display: flex;
+  }
   .add-comment button[type="submit"] i {
     margin-right: 5px;
+  }
+  .add-comment h2{
+    color:#5d62c3;
+    margin-left:15px;
   }
   
