@@ -40,36 +40,36 @@ search
 <div id="reportModal" class="modal">
     <div class="modal-content">
         <!-- Thêm nút "x" để đóng modal -->
-        <span class="close" onclick="closeReportModal()">&times;</span>
+        <span class="close" onclick="closeReportModal()"><i class="fa fa-arrow-turn-right"></i></span>
         <h2>Chọn loại báo cáo</h2>
         <label>
             <input type="radio" name="reportType" value="reportError">
             Báo cáo lỗi sai của câu
-        </label>
+        </label><br>
         <label>
             <input type="radio" name="reportType" value="contributeSentence">
             Đóng góp câu mới
-        </label>
+        </label><br>
         <button onclick="continueReport()">Kết tiếp</button>
     </div>
 </div>
 
-<div id="newBox1" class="modal" style="display: none;">  
-    <span class="close" onclick="closeNewBoxModal()">&times;</span>
-    <h2>Chọn lỗi sai:</h2>
-    <label><input type="radio" name="errorType" value="dich_sai" />Dịch sai nghĩa tiếng Việt</label>
-    <label><input type="radio" name="errorType" value="sai_ngu_phap" />Sai ngữ pháp</label>
-    <label><input type="radio" name="errorType" value="loi_khac" />Lỗi khác</label>
-    <textarea id="errorDescription" placeholder="Hãy cho tôi biết về lỗi sai..."></textarea>
+<div id="newBox1"  class="modal" style="display: none;">  
+    <span class="close" onclick="closeNewBoxModal()"><i class="fa fa-arrow-turn-right"></i></span>
+    <h2>Chọn lỗi sai:</h2><br>
+    <label><input type="radio" name="errorType" value="dich_sai" />Dịch sai nghĩa tiếng Việt</label><br>
+    <label><input type="radio" name="errorType" value="sai_ngu_phap" />Sai ngữ pháp</label><br>
+    <label><input type="radio" name="errorType" value="loi_khac" />Lỗi khác</label><br>
+    <textarea id="errorDescription" placeholder="Hãy cho tôi biết về lỗi sai..."></textarea><br>
     <button onclick="submitReport()">Hoàn tất</button>
 </div>
 
 <div id="contributeBox" class="modal" style="display: none;">
-    <span class="close" onclick="closeContributeBoxModal()">&times;</span>
-    <h2>Nhập câu tiếng Nhật:</h2>
+    <span class="close" onclick="closeContributeBoxModal()"><i class="fa fa-arrow-turn-right"></i></span>
+    <h3>Nhập câu tiếng Nhật:</h3>
     <textarea id="japaneseSentence" placeholder="Nhập câu tiếng Nhật..."></textarea>
-    <h2>Nhập câu tiếng Việt tương ứng:</h2>
-    <textarea id="vietnameseSentence" placeholder="Nhập câu tiếng Việt..."></textarea>
+    <h3>Nhập câu tiếng Việt tương ứng:</h3>
+    <textarea id="vietnameseSentence" placeholder="Nhập câu tiếng Việt..."></textarea><br>
     <button onclick="submitContribute()">Hoàn tất</button>
 </div>
 
