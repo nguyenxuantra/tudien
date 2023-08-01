@@ -6,60 +6,43 @@
 }
 
 #painting_list1 {
-    box-sizing: border-box;
     color: burlywood;
 }
 
 #painting_list2 {
-    padding-left: 100px;
-    display: flex;
-    border-radius: 20px;
-    width: 50px;
+    margin: 30px;
+    text-align: center;
 }
 
-#paintingname_1 {
-    margin: 0;
-    color: rgb(68, 65, 65);
-    font-weight: 500;
-    right: 0;
-    position: absolute;
-    width: 700px;
+#paintingname_2 {
+    margin-left: 50px;
+    line-height: 40px;
+    font-family: 'Merriweather';
+    color: #282431;
 }
 
-#painting_list3 p {
-    font-weight: 500;
-    margin: 50px;
-    padding: 0; 
-    right: 0;
-    top: 20;
-    position: absolute;
-    width: 650px;
+#paintingname_3 {
+    margin-left: 50px;
+    font-weight: bold;
+    color: green;
+    font-family: 'PT Serif';
 }
 
 #painting_list4 a {
     text-decoration: none;
-    line-height: 35px;
-    color: #D6905C;
-    right: 0;
-    top: 20;
-    position: absolute;
-    width: 200px;
+    color: chocolate;
+    margin-left: 50px;
 }
 
-#painting_list5 a {
+#paintinglist_6 a {
     text-decoration: none;
-    line-height: 35px;
-    color: indianred;
-    right: 0;
-    top: 20;
-    position: absolute;
-    width: 200px;
+    margin-left: 50px;
+    font-weight: 500;
+    color: brown;
 }
 
-#paintinglist_6 a{
-    color: #7368FA;
-    line-height: 35px;
-    text-overflow: unset;
-    transition: none;
-    text-decoration: none;
+
+#painting_list-child {
+    display: flex;
+    
 }

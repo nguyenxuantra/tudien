@@ -10,24 +10,27 @@ Painting Detail
     <div class="painting_list1">
 <ul>
     {% for painting in paintings %}
-    <li>
+    <li id="painting_list-child">
         <div id="painting_list2">
             <img src="{{ painting.image.url }}"  width="200px">
         </div>
             <div id="paintingname_1">
-                <h2>{{ painting.name }}</h2>
-            </div>
-        <div id="painting_list3">
-            <p>{{ painting.description }}</p>
-            <p><i class="fa-solid fa-ellipsis-vertical"></i>  Created at: {{ painting.date }}</p>
-        </div>
+                <div id="paintingname_2">
+                    <h2>{{ painting.name }}</h2>
+                </div>
+            <div id="paintingname_3">
+                <p>{{ painting.description }}</p>
+                <p><i class="fa-solid fa-ellipsis-vertical"></i>  Created at: {{ painting.date }}</p>
+            </div>  
 
-        <div id="painting_list4">
-            <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-solid fa-pen-to-square"></i>  Edit</a> </br>
-        </div>
-            <div id="painting_list5">  
-            <a href="{% url 'delete_painting' painting.pk %}"><i class="fa-solid fa-delete-left"></i>  Delete</a>
-        </div>  
+            <div id="painting_list4">
+                <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-solid fa-pen-to-square"></i>  Edit</a>
+                <a href="{% url 'delete_painting' painting.pk %}"><i class="fa-solid fa-delete-left"></i>  Delete</a>
+            </div>
+
+            </div>
+        
+            
     </li>
     {% endfor %}
 </ul>
