@@ -5,7 +5,7 @@ Painting Detail
 
 {% block content %}
 <div id="painting_list0">
-    <h1 id="paintinglist_pap"><i class="fa-solid fa-list-ul"></i>  Painting List</h1>
+    <h1 id="paintinglist_pap"><i class="fa-solid fa-list"></i>  Painting List</h1>
 </div>
     <div class="painting_list1">
 <ul>
@@ -24,7 +24,7 @@ Painting Detail
             </div>  
 
             <div id="painting_list4">
-                <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-solid fa-pen-to-square"></i>  Edit</a>
+                <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-regular fa-pen-to-square"></i>  Edit</a>
                 <a href="{% url 'delete_painting' painting.pk %}"><i class="fa-solid fa-delete-left"></i>  Delete</a>
             </div>
 
@@ -36,6 +36,6 @@ Painting Detail
 </ul>
     </div>  
 <div id="paintinglist_6"> 
-    <a href="{% url 'add_painting' %}"><i class="fa-solid fa-plus"></i> Add New Painting</a>
+    <a href="{% url 'add_painting' %}"><i class="fa-solid fa-square-plus"></i> Add New Painting</a>
 </div>
 {% endblock content %}
