@@ -4,6 +4,29 @@ search
 {% endblock title %}
 
 {% block content %}
+<div id="search">
+    <form action="{% url 'search' %}" id="search-box" method="POST">
+        {% csrf_token %}
+        <input type="search" id="search-text" role="search" placeholder="search" aria-label="search" name="searched">
+        <button type="submit"><i class="fa fa-magnifying-glass"></i></button>
+    </form>
+</div>    
+<!-- Phong cách -->
+<div id="nav-style">
+    <select name="style" id="style" class="custom-select">
+        <option value=""> Chọn phong cách</option>
+        <option value="Văn viết" {% if style == 'Văn viết' %}selected{% endif %}>Văn viết</option>
+        <option value="Văn nói" {% if style == 'Văn nói' %}selected{% endif %}>Văn nói</option>
+    </select>
+<!-- Chủ đề -->
+    <select name="topic" id="topic" class="custom-select">
+        <option value="">Chọn chủ đề </option>
+        <option value="Du lịch" {% if topic == 'Du lịch' %}selected{% endif %}>Du lịch</option>
+        <option value="Đời thường" {% if topic == 'Đời thường' %}selected{% endif %}>Đời thường</option>
+        <option value="Kinh tế" {% if topic == 'Kinh tế' %}selected{% endif %}>Kinh tế</option>
+        <option value="Y tế" {% if topic == 'Y tế' %}selected{% endif %}>Y tế</option>
+    </select>
+</div>
 <div id="search-wraper">
     {% if searched %}
           {% if keys %}

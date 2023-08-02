@@ -17,9 +17,7 @@
         font-weight: 500;
         left: 15px;
  }
-#add_painting3 textarea{
-    border-radius: 1px solid black;
-}
+
 button {
     cursor: pointer;
     color: black;
