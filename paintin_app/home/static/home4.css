@@ -6,20 +6,14 @@ body {
 
 /* General Styles */
 #home-content1 {
-    
-    padding: 50px;
+    padding: 30px;
     text-align: center;
+    margin-top:20px;
 }
 
-#home-pap {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-}
 
 #home-start {
-    max-width: 600px;
+    width:70%;
     margin: 0 auto;
 }
 
@@ -27,7 +21,6 @@ body {
     font-size: 36px;
     font-weight: bold;
     color: #007BFF;
-    margin-bottom: 20px;
 }
 
 .home-subtitle {
@@ -98,4 +91,9 @@ body {
 
 .home-search-form button:hover {
     background-color: #0056b3;
+}
+#home-content1 img{
+    width: auto;
+    height: 45px;
+    margin-top: -30px;
 }
