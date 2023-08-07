@@ -4,6 +4,9 @@ Painting Detail
 {% endblock title %}
 
 {% block content %}
+<div id="paintinglist_6"> 
+    <a href="{% url 'add_painting' %}"><i class="fa-solid fa-square-plus"></i> Add New Painting</a>
+</div>
 <div id="painting_list0">
     <h1 id="paintinglist_pap"><i class="fa-solid fa-list"></i>  Painting List</h1>
 </div>
@@ -35,7 +38,4 @@ Painting Detail
     {% endfor %}
 </ul>
     </div>  
-<div id="paintinglist_6"> 
-    <a href="{% url 'add_painting' %}"><i class="fa-solid fa-square-plus"></i> Add New Painting</a>
-</div>
 {% endblock content %}

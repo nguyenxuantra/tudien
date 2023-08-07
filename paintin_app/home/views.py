@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .forms import RegistrationForm,ComentForm,PaintingForm
 from .models import painting,comment
-
+from django.http import JsonResponse
 # Create your views here.
 
 def index(request):
@@ -98,4 +98,18 @@ def delete_painting(request, pk):
 
 def report_issue(request):
     return render(request, 'pages/report_issue.html') 
+
+def add_related_info(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        discription = request.POST.get('discription')
+        image = request.FILES.get('image')
+
+        new_info = painting(name=name, discription=discription, image=image)
+        new_info.save()
+
+    # Lấy thông tin tất cả các bản ghi
+    related_paintings = painting.objects.all()
+
+    return render(request, 'pages/add_related_info.html', {'related_paintings': related_paintings})
 

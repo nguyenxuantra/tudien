@@ -40,7 +40,7 @@ search
                                    <p><i class="fa fa-headphones"></i> &nbsp;{{key.discription}}</p>
                                    <p>{{key.name}}</p>
                                    <div id ="search-child3">
-                                        <a href="{% url 'search_history' %}"><p>Xem toàn bộ ngữ cảnh &nbsp;<i class="fa-solid fa-arrows-up-down-left-right"></i></p></a>
+                                        <a href="#" onclick="showngucanh()"><p>Xem toàn bộ ngữ cảnh &nbsp;<i class="fa-solid fa-arrows-up-down-left-right"></i></p></a>
                                         <a href="{% url 'painting_detail' key.pk %}"><p>thảo luận &nbsp;<i class="fa fa-comment"></i></p></a>
                                    </div>
                                    <div id="search_child4">
@@ -95,13 +95,28 @@ search
     <textarea id="vietnameseSentence" placeholder="Nhập câu tiếng Việt..."></textarea><br>
     <button onclick="submitContribute()">Hoàn tất</button>
 </div>
+<div id="ngucanh" class="modal" style="display:none;">
+    <span class="close" onclick="closengucanh()"><i class="fa fa-arrow-turn-right"></i></span>
+    <div>Đây là ngữ cảnh</div>
+    <a href="{% url 'add_related_info' %}">Thêm</a>
+    <ul id="related-sentences">
+        <!-- Các câu liên quan sẽ được hiển thị ở đây -->
+        {% for painting in related_paintings %}
+        <li>{{ painting.name }} - {{ painting.discription }}</li>
+        {% endfor %}
+    </ul>
+</div>
 
 <script>
     function showReportModal() {
         const modal = document.getElementById('reportModal');
         modal.style.display = 'block';
     }
-
+    function showngucanh() {
+        const modal = document.getElementById('ngucanh');
+        modal.style.display = 'block';
+    }
+    
     function continueReport() {
         const reportType = document.querySelector('input[name="reportType"]:checked').value;
         if (reportType === 'contributeSentence') {
@@ -134,7 +149,10 @@ search
         const contributeBox = document.getElementById('contributeBox');
         contributeBox.style.display = 'none';
     }
-   
+    function closengucanh() {
+        const reportBox = document.getElementById('ngucanh');
+        reportBox.style.display = 'none';
+    }
 
     function showThankYouMessage(message) {
         alert(message);
