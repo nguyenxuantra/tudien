@@ -1,4 +1,7 @@
 /* Phần thông tin chi tiết tranh */
+#comments_wraper{
+    min-height:500px;
+}
 .painting-details {
     margin: 20px;
   }

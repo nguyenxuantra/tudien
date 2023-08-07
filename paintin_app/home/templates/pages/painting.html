@@ -4,51 +4,52 @@ Painting Detail
 {% endblock title %}
 
 {% block content %}
-<div class="painting-details">
-    <div id="search-start">
-        <div id="search-content1">
-             <div id="search-child1">
-                  <img src="{{painting.image.url}}">
-             </div>
-             <div id="search-child2">
-                  <p><i class="fa fa-headphones"></i> &nbsp;{{painting.discription}}</p>
-                  <p>{{painting.name}}</p>
-                  <div id ="search-child3">
-                       <a href="{% url 'search_history' %}"><p>Xem toàn bộ ngữ cảnh &nbsp;<i class="fa-solid fa-arrows-up-down-left-right"></i></p></a>
-                       <a href="#"><p>thảo luận &nbsp;<i class="fa fa-comment"></i></p></a>
-                  </div>
-             </div>
-        </div>
-   </div>
-</div>
-
-<div class="add-comment">
-    <h2>Bình luận</h2>
-    {% if user.username %}
-    <form action="{% url 'painting_detail' painting.pk %}" method="POST" class="form-comment">
-        {% csrf_token %}
-        {{form.body}}
-        
-        <button type="submit"><i class="fa fa-paper-plane"></i></button>
-    </form>
-    {% else %}
-    {% endif %}
-</div>
-<div class="comments-section">
-    <ul>
-        {% for comment in painting.coments.all %}
-        <div id="comments-content">
-            <div id="comment-icon"> 
-                <i class="fa fa-user"></i>
+<div id= "comments_wraper">
+    <div class="painting-details">
+        <div id="search-start">
+            <div id="search-content1">
+                <div id="search-child1">
+                    <img src="{{painting.image.url}}">
+                </div>
+                <div id="search-child2">
+                    <p><i class="fa fa-headphones"></i> &nbsp;{{painting.discription}}</p>
+                    <p>{{painting.name}}</p>
+                    <div id ="search-child3">
+                        <a href="{% url 'search_history' %}"><p>Xem toàn bộ ngữ cảnh &nbsp;<i class="fa-solid fa-arrows-up-down-left-right"></i></p></a>
+                        <a href="#"><p>thảo luận &nbsp;<i class="fa fa-comment"></i></p></a>
+                    </div>
+                </div>
             </div>
-            <div id="comment-child1">
-                <p id="author"> {{ comment.author }} <span>{{ comment.date }}</span></p>
-                <p id="comment-body">{{ comment.body }}</p>  
-            </div>
-        </div>
-        {% endfor %}
-    </ul>
-</div>
+    </div>
+    </div>
 
+    <div class="add-comment">
+        <h2>Bình luận</h2>
+        {% if user.username %}
+        <form action="{% url 'painting_detail' painting.pk %}" method="POST" class="form-comment">
+            {% csrf_token %}
+            {{form.body}}
+            
+            <button type="submit"><i class="fa fa-paper-plane"></i></button>
+        </form>
+        {% else %}
+        {% endif %}
+    </div>
+    <div class="comments-section">
+        <ul>
+            {% for comment in painting.coments.all %}
+            <div id="comments-content">
+                <div id="comment-icon"> 
+                    <i class="fa fa-user"></i>
+                </div>
+                <div id="comment-child1">
+                    <p id="author"> {{ comment.author }} <span>{{ comment.date }}</span></p>
+                    <p id="comment-body">{{ comment.body }}</p>  
+                </div>
+            </div>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 
 {% endblock content %}
