@@ -4,40 +4,49 @@ Painting Detail
 {% endblock title %}
 
 {% block content %}
-
-<div id="painting_list0">
-    <h1 id="paintinglist_pap"><i class="fa-solid fa-list"></i>  Painting List</h1>
-</div>
-    <div class="painting_list1">
-<ul>
-    {% for painting in paintings %}
-    <li id="painting_list-child">
-        <div id="painting_list2">
-            <img src="{{ painting.image.url }}"  width="200px">
-        </div>
-            <div id="paintingname_1">
-                <div id="paintingname_2">
-                    <h2>{{ painting.name }}</h2>
-                </div>
-            <div id="paintingname_3">
-                <p>{{ painting.description }}</p>
-                <p><i class="fa-solid fa-ellipsis-vertical"></i>  Created at: {{ painting.date }}</p>
-            </div>  
-
-            <div id="painting_list4">
-                <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-regular fa-pen-to-square"></i>  Edit</a>
-                <a href="{% url 'delete_painting' painting.pk %}"><i class="fa-solid fa-delete-left"></i>  Delete</a>
-            </div>
-            
-            </div>
-
-            
-    </li>
-
-    {% endfor %}
-</ul>
-    </div>  
+<div id="painting_list">
     <div id="paintinglist_6"> 
         <a href="{% url 'add_painting' %}"><i class="fa-solid fa-square-plus"></i> Add New Painting</a>
     </div>
+    <div class="painting_list1">
+        <ul>
+            {% for painting in paintings %}
+            <li id="painting_list-child">
+                <div id="painting_list2">
+                    <img src="{{ painting.image.url }}">
+                </div>
+                <div id="paintingname_1">
+                    <div id="paintingname_2">
+                        <p>{{ painting.discription }}</p>
+                    </div>
+                    <div id="paintingname_3">
+                        <p>{{ painting.name }}</p>
+                        <p><span><i class="fa-solid fa-ellipsis-vertical"></i>  Created at: {{ painting.date }}</span></p>
+                    </div>  
+
+                    <div id="painting_list4">
+                        <a href="{% url 'edit_painting' painting.pk %}"><i class="fa-regular fa-pen-to-square"></i>  Edit</a>
+                        <a href="#" class="delete-link" data-painting-id="{{ painting.pk }}"><i class="fa-solid fa-delete-left"></i>  Delete</a>
+                    </div>
+                </div>
+            </li>
+            <hr>
+            {% endfor %}
+        </ul>
+    </div>  
+</div>
+<script>
+    const deleteLinks = document.querySelectorAll('.delete-link');
+    deleteLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const paintingId = this.getAttribute('data-painting-id');
+            const paintingName = this.parentElement.parentElement.querySelector('#paintingname_3 p:first-child').textContent;
+            
+            if (confirm(`Xác nhận xóa`)) {
+                window.location.href = `/delete/${paintingId}/`;
+            }
+        });
+    });
+</script>
 {% endblock content %}

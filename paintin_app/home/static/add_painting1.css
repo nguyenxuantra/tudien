@@ -11,7 +11,7 @@
     left: 10px;
 }
 
-#add_painting3 p {
+.add_painting3 p {
         color: brown;
         font-weight: 600;
         left: 15px;
@@ -39,3 +39,21 @@ button:hover {
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
+
+.add_center{
+    width:80%;
+    margin:0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add_painting3 textarea,input[type='text']{
+    border:1px solid rgb(120, 116, 116);
+    outline: none;
+    font-size: 15px;
+    padding:5px;
+    font-family: 'Times New Roman', Times, serif;
+    width:75%;
+}
+

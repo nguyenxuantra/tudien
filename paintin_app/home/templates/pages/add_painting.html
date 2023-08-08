@@ -6,25 +6,25 @@ Add painting
 
 {% block content %}
 
-<div id="add_center">
-<h1 id="add_painting1"><i class="fa-solid fa-plus"></i>Thêm Mục</h1>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div id="add_painting2">
-        <p>Name: {{ form.name }}</p>
-    </div>
+<div class="add_center">
+    <div class="add_center-child1">
+            <h1 id="add_painting1"><i class="fa-solid fa-plus"></i>Thêm Mục</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div id="add_painting2">
+                    <p id="add_painting2-child">Name: {{ form.name }}</p>
+                </div>
 
-    <div id="add_painting3">
-        <p>Discription: {{form.discription}}</p>
-        <p><i class="fa-solid fa-image"></i>  Image: {{form.image}}</p>
-    </div>
+                <div class="add_painting3">
+                    <p>Discription: {{form.discription}}</p>
+                    <p><i class="fa-solid fa-image"></i>  Image: {{form.image}}</p>
+                </div>
 
-    <div id="add_button">
-        <button type="submit">Save</button>
+                <div id="add_button">
+                    <button type="submit">Save</button>
+                </div>
+            </form>
     </div>
 </div>
-    
-</form>
-
 {% endblock content %}
 
