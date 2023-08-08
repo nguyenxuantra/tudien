@@ -3,6 +3,7 @@
     color: #7368FA;
     font-style: initial;
     margin: 15px;
+
 }
 
 #painting_list1 {
@@ -17,7 +18,7 @@
 #paintingname_2 {
     margin-left: 50px;
     line-height: 40px;
-    font-family: 'Merriweather';
+    font-family: 'EB Garamond';
     color: #282431;
 }
 
@@ -25,7 +26,7 @@
     margin-left: 50px;
     font-weight: bold;
     color: green;
-    font-family: 'PT Serif';
+    font-family: 'EB Garamond';
 }
 
 #painting_list4 a {
