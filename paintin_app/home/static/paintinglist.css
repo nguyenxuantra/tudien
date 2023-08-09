@@ -1,0 +1,49 @@
+#paintinglist_pap {
+    font-weight: 500;
+    color: #7368FA;
+    font-style: initial;
+    margin: 15px;
+
+}
+
+#painting_list1 {
+    color: burlywood;
+}
+
+#painting_list2 {
+    margin: 30px;
+    text-align: center;
+}
+
+#paintingname_2 {
+    margin-left: 50px;
+    line-height: 40px;
+    font-family: 'EB Garamond';
+    color: #282431;
+}
+
+#paintingname_3 {
+    margin-left: 50px;
+    font-weight: bold;
+    color: green;
+    font-family: 'EB Garamond';
+}
+
+#painting_list4 a {
+    text-decoration: none;
+    color: chocolate;
+    margin-left: 50px;
+}
+
+#paintinglist_6 a {
+    text-decoration: none;
+    margin-left: 50px;
+    font-weight: 500;
+    color: brown;
+}
+
+
+#painting_list-child {
+    display: flex;
+    
+}
